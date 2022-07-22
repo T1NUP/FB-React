@@ -28,7 +28,7 @@ class HeaderComponent extends Component {
             <>
             {isUserLoggedIn && <header>
                 <Navbar expand={"md"} className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <OverlayTrigger placement={"bottom"} overlay={<Tooltip id={"tooltip-bottom"}>Back to home</Tooltip>}><Link className="nav-link" to="/welcome/"><img src={Logo} alt="Logo" className="rmitLogo"/></Link>
+                    <OverlayTrigger placement={"bottom"} overlay={<Tooltip id={"tooltip-bottom"}>Back to home</Tooltip>}><Link className="nav-link" to="/welcome/"><img src={Logo} alt="Logo" className="myLogo"/></Link>
                     </OverlayTrigger>
                     <ul className="navbar-nav d-md-block d-none" style={{marginRight: "1.1rem"}}>
                         <Link className="nav-link" to="/welcome/">Home</Link>

@@ -17,12 +17,13 @@ class WelcomeComponent extends Component {
         super(props)
         this.state = {
             posts: [],
-            followingAndMe: [AuthenticationService.getLoggedInUserName()]
+            followingAndMe: []
         }
         this.refers = [];
     }
 
     componentDidMount() {
+        this.getFollowers();
         this.retrieveAllTodos();
         stompClient = Socket.connect();
         stompClient.connect({}, this.onConnected, this.onError);
@@ -35,6 +36,17 @@ class WelcomeComponent extends Component {
 
     onError = (err) => {
         console.error(err);
+    }
+
+    getFollowers=()=>{
+        let user= AuthenticationService.getLoggedInUserName();
+        AccountProfileService.getFollowingUsers(user)
+        .then((response)=>{
+            if(response.data)
+            {
+                this.setState({followingAndMe: [...response.data,user]});
+            }
+        });
     }
 
     retrieveAllTodos = (payload) => {

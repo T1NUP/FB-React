@@ -19,7 +19,7 @@ export default class ChatBoxBasic extends Component {
     connect = () => {
         const Stomp = require('stompjs');
         let SockJS = require('sockjs-client');
-        SockJS = new SockJS('http://localhost:8080/ws')
+        SockJS = new SockJS('http://localhost:8083/ws')
         stompClient = Stomp.over(SockJS);
         stompClient.connect({}, this.onConnected, this.onError);
     }
