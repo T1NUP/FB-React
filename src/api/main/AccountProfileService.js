@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { API_URL, JPA_API_URL } from '../../Constants'
+import { API_URL, GATEWAY_JPA_API_URL, JPA_API_URL } from '../../Constants'
 
 class AccountProfileService {
 
@@ -24,7 +24,7 @@ class AccountProfileService {
     }
 
     updateDetails(username, firstname, lastname, email, phonenumber, aboutme) {
-        return axios.post(`${API_URL}/updateProfile`, {
+        return axios.post(`http://localhost:8080/updateProfile`, {
             // returnos axios.post(`http://localhost:8083/updateProfile`, {
             username,
             firstname,
@@ -102,15 +102,15 @@ class AccountProfileService {
     }
 
     getFollowingUsers(username){
-        return axios.get(`${JPA_API_URL}/${username}/following`);
+        return axios.get(`${GATEWAY_JPA_API_URL}/${username}/following`);
     }
 
     addFollowers(user,toFollow){
-        return axios.put(`${JPA_API_URL}/user/${user}/followuser/${toFollow}`);
+        return axios.put(`${GATEWAY_JPA_API_URL}/user/${user}/followuser/${toFollow}`);
     }
 
     removeFollower(user, toUnFollow){
-        return axios.put(`${JPA_API_URL}/user/${user}/unfollowuser/${toUnFollow}`);
+        return axios.put(`${GATEWAY_JPA_API_URL}/user/${user}/unfollowuser/${toUnFollow}`);
     }
 
 }
