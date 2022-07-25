@@ -54,6 +54,10 @@ class PostDataService {
         return axios.post(`${JPA_API_URL}/unlike`, body)
     }
 
+    reportPost(body) {
+        return axios.post(`${JPA_API_URL}/post/report`, body)
+    }
+
 }
 
 export default new PostDataService()

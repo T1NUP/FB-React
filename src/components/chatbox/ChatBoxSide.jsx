@@ -53,17 +53,18 @@ export default class ChatBoxSide extends Component {
           channelConnected: true
         })
 
-        let url = stompClient.ws._transport.url;
-        url = url.replace("ws://localhost:8080/ws",  "");
-        url = url.replace("/websocket", "");
-        url = url.replace(/^[0-9]+\//, "");
+//         let url = stompClient.ws._transport.url;
+//         url = url.replace("ws://localhost:8080/ws",  "");
+//         url = url.replace("/websocket", "");
+//         url = url.replace(/^[0-9]+\//, "");
 
-        sessionId = url;
+//         sessionId = url;
 
         // Subscribing to the public topic
         stompClient.subscribe('/topic/public', this.onMessageReceived);
         stompClient.subscribe('/topic/getUser', this.onRefreshUserList);
         stompClient.subscribe('/queue/specific-user', (msg) => {
+            console.log("SPECIFIC", msg);
         });
         // Registering user to server
         stompClient.send("/app/addUser",

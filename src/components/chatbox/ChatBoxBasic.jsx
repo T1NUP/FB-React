@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { WEB_SOCKET_URL } from '../../Constants';
 
 export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 
@@ -19,7 +20,7 @@ export default class ChatBoxBasic extends Component {
     connect = () => {
         const Stomp = require('stompjs');
         let SockJS = require('sockjs-client');
-        SockJS = new SockJS('http://localhost:8083/ws')
+        SockJS = new SockJS(WEB_SOCKET_URL);
         stompClient = Stomp.over(SockJS);
         stompClient.connect({}, this.onConnected, this.onError);
     }
