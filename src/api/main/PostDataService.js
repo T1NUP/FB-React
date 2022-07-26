@@ -55,7 +55,7 @@ class PostDataService {
     }
 
     reportPost(body) {
-        return axios.post(`${GATEWAY_POST_JPA_API_URL}/post/report`, body)
+        return axios.post(`${GATEWAY_POST_JPA_API_URL}/report`, body)
     }
 
 }
